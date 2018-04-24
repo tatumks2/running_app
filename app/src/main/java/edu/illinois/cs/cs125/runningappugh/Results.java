@@ -33,6 +33,10 @@ public class Results extends AppCompatActivity {
         startActivity(new Intent(Results.this, MainActivity.class));
     }
 
+    public void changeActivityRating (View v) {
+        startActivity(new Intent(Results.this, Rating.class));
+    }
+
     public void buttonOnClick(View v) {
         Button button = (Button) v;
         ( (Button) v) .setText("clicker");
