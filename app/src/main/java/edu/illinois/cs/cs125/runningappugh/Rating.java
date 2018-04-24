@@ -1,5 +1,6 @@
 package edu.illinois.cs.cs125.runningappugh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,4 +27,7 @@ public class Rating extends AppCompatActivity {
         });
     }
 
+    public void changeActivity (View v) {
+        startActivity(new Intent(Rating.this, MainActivity.class));
+    }
 }

@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/avergSpeed"
             android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_height="48dp"
             android:text="Average Speed: "
             android:textSize="20sp" />
 
