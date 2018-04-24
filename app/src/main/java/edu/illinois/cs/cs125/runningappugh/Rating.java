@@ -1,12 +1,14 @@
 package edu.illinois.cs.cs125.runningappugh;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 public class Rating extends AppCompatActivity {
 
@@ -29,5 +31,10 @@ public class Rating extends AppCompatActivity {
 
     public void changeActivity (View v) {
         startActivity(new Intent(Rating.this, MainActivity.class));
+    }
+
+    public void stars (View v) {
+        Button button = (Button) v;
+        button.setBackgroundColor(Color.BLUE);
     }
 }
