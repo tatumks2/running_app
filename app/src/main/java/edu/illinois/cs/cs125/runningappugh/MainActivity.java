@@ -1,5 +1,6 @@
 package edu.illinois.cs.cs125.runningappugh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -51,7 +52,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void buttonOnClick(View v) {
-        ( (Button) v) .setText("clicker");
+    public void changeActivity (View v) {
+        //Button button = (Button) v;
+        startActivity(new Intent(MainActivity.this, Main2Activity.class));
+    }
+
+    public void changeActivityHistory (View v) {
+        startActivity(new Intent(MainActivity.this, History.class));
     }
 }
