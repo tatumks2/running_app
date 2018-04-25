@@ -19,6 +19,7 @@ public class Main2Activity extends AppCompatActivity {
     long lastTimeMilli;
     long savedTime;
     long time;
+    Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,12 @@ public class Main2Activity extends AppCompatActivity {
     public void pauseTimer (View v) {
         savedTime += time;
         currentRun.time = savedTime;
+        timer.cancel();
+        timer.purge();
+
     }
     public void startTimer (View v) {
-        Timer timer = new Timer();
+        timer = new Timer();
         lastTimeMilli = System.currentTimeMillis();
         TimerTask updateTime = new TimerTask() {
             @Override
