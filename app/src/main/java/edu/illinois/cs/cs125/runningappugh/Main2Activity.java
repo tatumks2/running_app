@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -57,16 +58,21 @@ public class Main2Activity extends AppCompatActivity {
 
     }
     public void startTimer (View v) {
+        //savedTime = 0;
         timer = new Timer();
         lastTimeMilli = System.currentTimeMillis();
+        Log.d("ks2", "" + lastTimeMilli);
         TimerTask updateTime = new TimerTask() {
             @Override
             public void run() {
                 time = System.currentTimeMillis() - lastTimeMilli;
-                TextView text = (TextView) findViewById(R.id.timeText);
-                text.setText("Time: " + (savedTime + time));
+                Log.d("ks2", "" + time);
+                TextView text = findViewById(R.id.timeText);
+                Log.d("ks2", "" + time);
+                //text.setText("Time: ");
+                Log.d("ks2", "" + time);
             }
         };
-        timer.scheduleAtFixedRate(updateTime, 0, 1500);
+        timer.scheduleAtFixedRate(updateTime, 0, 2000);
     }
 }
