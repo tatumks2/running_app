@@ -34,7 +34,13 @@ public class Rating extends AppCompatActivity {
     }
 
     public void stars (View v) {
+        Button[] allStars = {findViewById(R.id.oneStar), findViewById(R.id.twoStars), findViewById(R.id.threeStars), findViewById(R.id.fourStars), findViewById(R.id.fiveStars)};
         Button button = (Button) v;
-        button.setBackgroundColor(Color.BLUE);
+        button.setBackgroundColor(Color.YELLOW);
+        for (int i = 0; i < 5; i++) {
+            if (button != allStars[i]) {
+                allStars[i].setBackgroundColor(Color.WHITE);
+            }
+        }
     }
 }
