@@ -66,7 +66,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void run() {
                 time = System.currentTimeMillis() - lastTimeMilli;
-                Log.d("ks2", "" + (time / 1000) );
+                Log.d("ks2", "" + (time / 1000));
                 TextView text = findViewById(R.id.timeText);
                 //text.setText((CharSequence)"Time: ");
                 //Log.d("ks2", "" + time);
