@@ -82,4 +82,5 @@
             android:onClick="changeActivity"
             android:text="Submit" />
     </LinearLayout>
+
 </RelativeLayout>
