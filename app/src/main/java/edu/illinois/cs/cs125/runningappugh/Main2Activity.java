@@ -66,13 +66,12 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void run() {
                 time = System.currentTimeMillis() - lastTimeMilli;
-                Log.d("ks2", "" + time);
+                Log.d("ks2", "" + (time / 1000) );
                 TextView text = findViewById(R.id.timeText);
-                Log.d("ks2", "" + time);
-                //text.setText("Time: ");
-                Log.d("ks2", "" + time);
+                //text.setText((CharSequence)"Time: ");
+                //Log.d("ks2", "" + time);
             }
         };
-        timer.scheduleAtFixedRate(updateTime, 0, 2000);
+        timer.scheduleAtFixedRate(updateTime, 0, 1000);
     }
 }
