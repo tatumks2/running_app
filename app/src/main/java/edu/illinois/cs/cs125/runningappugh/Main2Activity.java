@@ -20,6 +20,7 @@ public class Main2Activity extends AppCompatActivity {
     long savedTime;
     long time;
     Timer timer;
+    long distance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class Main2Activity extends AppCompatActivity {
 
     public void changeActivity (View v) {
         currentRun.time = time + savedTime;
+        currentRun.distance = distance;
         startActivity(new Intent(Main2Activity.this, Results.class));
     }
     public void pauseTimer (View v) {

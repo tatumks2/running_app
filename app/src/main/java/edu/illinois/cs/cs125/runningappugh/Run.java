@@ -39,6 +39,15 @@ public class Run {
             str += System.getProperty("line.separator");
             str += "Notes: " + notes;
         }
+        str += System.getProperty("line.separator");
         return str;
+    }
+
+    public String getAllStrings() {
+        if (lastRun != null) {
+            return getString() + System.getProperty("line.separator") + lastRun.getAllStrings();
+        } else {
+            return getString();
+        }
     }
 }

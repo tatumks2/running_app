@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 public class History extends AppCompatActivity {
 
@@ -25,6 +26,22 @@ public class History extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onStart () {
+        super.onStart();
+
+        if (Run.lastGlobalRun != null) {
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    TextView text = (TextView) findViewById(R.id.pastRunsText);
+                    text.setText(Run.lastGlobalRun.getAllStrings());
+                }
+            });
+        }
     }
 
     public void changeActivity (View v) {
