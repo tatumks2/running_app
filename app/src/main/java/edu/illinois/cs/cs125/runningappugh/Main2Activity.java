@@ -55,10 +55,10 @@ public class Main2Activity extends AppCompatActivity {
         currentRun.time = savedTime;
         timer.cancel();
         timer.purge();
+        time = 0;
 
     }
     public void startTimer (View v) {
-        //savedTime = 0;
         timer = new Timer();
         lastTimeMilli = System.currentTimeMillis();
         Log.d("ks2", "" + lastTimeMilli);
@@ -67,11 +67,13 @@ public class Main2Activity extends AppCompatActivity {
             public void run() {
                 time = System.currentTimeMillis() - lastTimeMilli;
                 Log.d("ks2", "" + (time / 1000));
-                TextView text = findViewById(R.id.timeText);
-                //text.setText((CharSequence)"Time: ");
-                //Log.d("ks2", "" + time);
+                Log.d("ks2", "" + (time / 1000) + (savedTime / 1000));
+
+                //setContentView(R.layout.activity_main2);
+                //TextView text = (TextView) findViewById(R.id.timeText);
+                //text.setText("Time: ");
             }
         };
-        timer.scheduleAtFixedRate(updateTime, 0, 1000);
+        timer.scheduleAtFixedRate(updateTime, 0, 2000);
     }
 }
