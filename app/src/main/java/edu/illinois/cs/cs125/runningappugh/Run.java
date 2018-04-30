@@ -3,17 +3,19 @@ import java.util.Calendar;
 
 public class Run {
     //date goes year, month, day of month
-    public int[] date;
+    private int[] date;
     public double distance;
     public long time;
     public int rating;
     public String notes;
     public Run lastRun;
+    public static Run lastGlobalRun;
 
     Run (Run last) {
         time = 0;
         distance = 0;
         lastRun = last;
+        rating = -1;
         Calendar cal = Calendar.getInstance();
         date = new int[3];
         date[0] = cal.get(Calendar.YEAR);
@@ -29,10 +31,14 @@ public class Run {
         str += "Distance: " + distance;
         str += System.getProperty("line.separator");
         str += "Average Speed: " + (distance / time);
-        str += System.getProperty("line.separator");
-        str += "Rating: " + rating + " stars";
-        str += System.getProperty("line.separator");
-        str += "Notes: " + notes;
+        if (rating != -1) {
+            str += System.getProperty("line.separator");
+            str += "Rating: " + rating + " stars";
+        }
+        if (notes != null) {
+            str += System.getProperty("line.separator");
+            str += "Notes: " + notes;
+        }
         return str;
     }
 }

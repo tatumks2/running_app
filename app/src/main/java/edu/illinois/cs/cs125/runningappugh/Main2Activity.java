@@ -15,7 +15,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main2Activity extends AppCompatActivity {
-
     Run currentRun;
     long lastTimeMilli;
     long savedTime;
@@ -42,12 +41,18 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onStart () {
         super.onStart();
-        currentRun = new Run();
+        if (Run.lastGlobalRun != null) {
+            currentRun = new Run(Run.lastGlobalRun);
+        } else {
+            currentRun = new Run(null);
+        }
+        Run.lastGlobalRun = currentRun;
         savedTime = 0;
         time = 0;
     }
 
     public void changeActivity (View v) {
+        currentRun.time = time + savedTime;
         startActivity(new Intent(Main2Activity.this, Results.class));
     }
     public void pauseTimer (View v) {
@@ -67,13 +72,20 @@ public class Main2Activity extends AppCompatActivity {
             public void run() {
                 time = System.currentTimeMillis() - lastTimeMilli;
                 Log.d("ks2", "" + (time / 1000));
-                Log.d("ks2", "" + (time / 1000) + (savedTime / 1000));
+                Log.d("ks2", "" + ((time / 1000) + (savedTime / 1000)));
 
                 //setContentView(R.layout.activity_main2);
-                //TextView text = (TextView) findViewById(R.id.timeText);
-                //text.setText("Time: ");
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        TextView text = (TextView) findViewById(R.id.timeText);
+                        text.setText("Time: " + ((time / 1000) + (savedTime / 1000)));
+                    }
+                });
+
             }
         };
-        timer.scheduleAtFixedRate(updateTime, 0, 2000);
+        timer.scheduleAtFixedRate(updateTime, 0, 1000);
     }
 }

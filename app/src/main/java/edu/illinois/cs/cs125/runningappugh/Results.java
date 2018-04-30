@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Results extends AppCompatActivity {
 
@@ -26,6 +27,32 @@ public class Results extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onStart () {
+        super.onStart();
+
+        if (Run.lastGlobalRun != null) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    TextView textTime = (TextView) findViewById(R.id.finalTime);
+                    String time = "Time: " + Run.lastGlobalRun.time;
+                    textTime.setText(time);
+
+                    TextView textDistance = (TextView) findViewById(R.id.finalDistance);
+                    textDistance.setText("Distance: " + Run.lastGlobalRun.distance);
+
+                    TextView textSpeed = (TextView) findViewById(R.id.avergSpeed);
+                    if (Run.lastGlobalRun.time == 0) {
+                        textSpeed.setText("Average Speed: 0");
+                    } else {
+                        textSpeed.setText("Average Speed: " + (Run.lastGlobalRun.distance / Run.lastGlobalRun.time));
+                    }
+                }
+            });
+        }
     }
 
     public void changeActivity (View v) {
