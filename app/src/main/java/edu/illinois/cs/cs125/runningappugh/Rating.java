@@ -41,7 +41,7 @@ public class Rating extends AppCompatActivity {
             if (button != allStars[i]) {
                 allStars[i].setBackgroundColor(Color.WHITE);
             } else {
-                Run.lastGlobalRun.rating = i;
+                Run.lastGlobalRun.rating = i + 1;
             }
         }
     }
