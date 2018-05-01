@@ -26,7 +26,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     long time;
     Timer timer;
     long distance;
-    TextView stepCounter;
+    TextView distanceText;
     SensorManager sensorManager;
     float steps;
     boolean running = false;
@@ -45,7 +45,6 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
                         .setAction("Action", null).show();
             }
         });
-        stepCounter = (TextView) findViewById(R.id.stepCounter);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     }
 
@@ -124,7 +123,8 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     public void onSensorChanged(SensorEvent event) {
         if (running) {
             steps = event.values[0];
-            stepCounter.setText(steps + " steps or about " + (steps/2112) + " miles");
+            distanceText = (TextView) findViewById(R.id.distanceText);
+            distanceText.setText("Distance: " + steps + " or about " + (steps/2112) + " miles");
         }
     }
 
