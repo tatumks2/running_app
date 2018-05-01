@@ -73,7 +73,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
         timer.purge();
         time = 0;
 
-        onPause();
+        onPause(); //this pauses the sensor
 
     }
     public void startTimer (View v) {
@@ -100,7 +100,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
             }
         };
         timer.scheduleAtFixedRate(updateTime, 0, 1000);
-        onResume();
+        onResume(); //this is for the sensor to track the steps again
     }
 
     protected void onResume(){
