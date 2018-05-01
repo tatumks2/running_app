@@ -126,7 +126,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
             steps = event.values[0];
             miles = event.values[0]/2112; //steps per mile approximately
             distanceText = (TextView) findViewById(R.id.distanceText);
-            distanceText.setText("Distance: " + steps + " or about " + miles + " miles");
+            distanceText.setText("Distance: " + steps + " steps ~ " + miles + " miles");
             distance = steps;
         }
     }

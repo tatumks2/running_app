@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/distanceText"
-            android:layout_width="102dp"
+            android:layout_width="394dp"
             android:layout_height="59dp"
             android:text="Distance: "
             android:textSize="18sp" />
