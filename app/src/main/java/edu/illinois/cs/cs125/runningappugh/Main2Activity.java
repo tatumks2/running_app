@@ -29,6 +29,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     long distance;
     TextView stepCounter;
     SensorManager sensorManager;
+    float steps;
     boolean running = false;
 
     @Override
@@ -74,6 +75,8 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
         timer.purge();
         time = 0;
 
+        onPause();
+
     }
     public void startTimer (View v) {
         timer = new Timer();
@@ -99,6 +102,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
             }
         };
         timer.scheduleAtFixedRate(updateTime, 0, 1000);
+        onResume();
     }
 
     protected void onResume(){
@@ -115,11 +119,13 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     protected void onPause() {
         super.onPause();
         running = false;
+        sensorManager.unregisterListener(this);
     }
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (running) {
-            stepCounter.setText(String.valueOf(event.values[0]));
+            steps = event.values[0];
+            stepCounter.setText(steps + " steps or about " + (steps/2112) + " miles");
         }
     }
 
