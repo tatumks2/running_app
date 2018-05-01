@@ -26,11 +26,11 @@ public class Run {
     public String getString () {
         String str = "Run on " + date[1] + "/" + date[2]+ "/" + date[0];
         str += System.getProperty("line.separator");
-        str += "Time: " + time;
+        str += "Time: " + (time / 1000);
         str += System.getProperty("line.separator");
         str += "Distance: " + distance;
         str += System.getProperty("line.separator");
-        str += "Average Speed: " + (distance / time);
+        str += "Average Speed: " + (distance / (time / 1000));
         if (rating != -1) {
             str += System.getProperty("line.separator");
             str += "Rating: " + rating + " stars";
