@@ -1,6 +1,11 @@
 package edu.illinois.cs.cs125.runningappugh;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,17 +15,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements SensorEventListener {
     Run currentRun;
     long lastTimeMilli;
     long savedTime;
     long time;
     Timer timer;
     long distance;
+    TextView stepCounter;
+    SensorManager sensorManager;
+    boolean running = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +37,6 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +45,8 @@ public class Main2Activity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        stepCounter = (TextView) findViewById(R.id.stepCounter);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     }
 
     @Override
@@ -89,5 +99,32 @@ public class Main2Activity extends AppCompatActivity {
             }
         };
         timer.scheduleAtFixedRate(updateTime, 0, 1000);
+    }
+
+    protected void onResume(){
+        super.onResume();
+        running = true;
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if (countSensor != null) {
+            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
+        } else {
+            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    protected void onPause() {
+        super.onPause();
+        running = false;
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (running) {
+            stepCounter.setText(String.valueOf(event.values[0]));
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
