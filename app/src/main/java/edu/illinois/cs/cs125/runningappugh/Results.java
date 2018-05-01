@@ -38,17 +38,17 @@ public class Results extends AppCompatActivity {
                 @Override
                 public void run() {
                     TextView textTime = (TextView) findViewById(R.id.finalTime);
-                    String time = "Time: " + Run.lastGlobalRun.time;
+                    String time = "Time: " + Run.lastGlobalRun.time/(1000) + " seconds";
                     textTime.setText(time);
 
                     TextView textDistance = (TextView) findViewById(R.id.finalDistance);
-                    textDistance.setText("Distance: " + Run.lastGlobalRun.distance);
+                    textDistance.setText("Distance: " + Run.lastGlobalRun.distance + " steps");
 
                     TextView textSpeed = (TextView) findViewById(R.id.avergSpeed);
                     if (Run.lastGlobalRun.time == 0) {
                         textSpeed.setText("Average Speed: 0");
                     } else {
-                        textSpeed.setText("Average Speed: " + (Run.lastGlobalRun.distance / Run.lastGlobalRun.time));
+                        textSpeed.setText("Average Speed: " + (Run.lastGlobalRun.distance / Run.lastGlobalRun.time) + " steps/second");
                     }
                 }
             });

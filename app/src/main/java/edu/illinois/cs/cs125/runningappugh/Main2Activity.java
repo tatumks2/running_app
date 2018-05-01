@@ -25,10 +25,11 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     long savedTime;
     long time;
     Timer timer;
-    long distance;
+    float distance; //changed to a float
     TextView distanceText;
     SensorManager sensorManager;
     float steps;
+    float miles;
     boolean running = false;
 
     @Override
@@ -123,8 +124,10 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     public void onSensorChanged(SensorEvent event) {
         if (running) {
             steps = event.values[0];
+            miles = event.values[0]/2112; //steps per mile approximately
             distanceText = (TextView) findViewById(R.id.distanceText);
-            distanceText.setText("Distance: " + steps + " or about " + (steps/2112) + " miles");
+            distanceText.setText("Distance: " + steps + " or about " + miles + " miles");
+            distance = steps;
         }
     }
 
