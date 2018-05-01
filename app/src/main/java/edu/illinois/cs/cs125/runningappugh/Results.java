@@ -48,7 +48,7 @@ public class Results extends AppCompatActivity {
                     if (Run.lastGlobalRun.time == 0) {
                         textSpeed.setText("Average Speed: 0");
                     } else {
-                        textSpeed.setText("Average Speed: " + (Run.lastGlobalRun.distance / Run.lastGlobalRun.time) + " steps/second");
+                        textSpeed.setText("Average Speed: " + (Run.lastGlobalRun.distance / (Run.lastGlobalRun.time/1000)) + " steps/second");
                     }
                 }
             });
