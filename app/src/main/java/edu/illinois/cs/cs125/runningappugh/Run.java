@@ -24,13 +24,13 @@ public class Run {
     }
 
     public String getString () {
-        String str = "Run on " + date[1] + "/" + date[2]+ "/" + date[0];
+        String str = "Run on " + (date[1]+1) + "/" + date[2]+ "/" + date[0];
         str += System.getProperty("line.separator");
-        str += "Time: " + (time / 1000);
+        str += "Time: " + (time / 1000) + " seconds";
         str += System.getProperty("line.separator");
-        str += "Distance: " + distance;
+        str += "Distance: " + distance + " steps";
         str += System.getProperty("line.separator");
-        str += "Average Speed: " + (distance / (time / 1000));
+        str += "Average Speed: " + (distance / (time / 1000)) + " steps/second";
         if (rating != -1) {
             str += System.getProperty("line.separator");
             str += "Rating: " + rating + " stars";
