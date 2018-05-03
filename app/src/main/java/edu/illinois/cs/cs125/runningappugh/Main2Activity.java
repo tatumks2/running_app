@@ -94,7 +94,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
                     @Override
                     public void run() {
                         TextView text = (TextView) findViewById(R.id.timeText);
-                        text.setText("Time: " + ((time / 1000) + (savedTime / 1000)));
+                        text.setText("Time: " + Run.formatTime(time + savedTime));
                     }
                 });
 

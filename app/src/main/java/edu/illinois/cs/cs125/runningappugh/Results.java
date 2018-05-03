@@ -38,7 +38,7 @@ public class Results extends AppCompatActivity {
                 @Override
                 public void run() {
                     TextView textTime = (TextView) findViewById(R.id.finalTime);
-                    String time = "Time: " + Run.lastGlobalRun.time/(1000) + " seconds";
+                    String time = "Time: " + Run.formatTime(Run.lastGlobalRun.time);
                     textTime.setText(time);
 
                     TextView textDistance = (TextView) findViewById(R.id.finalDistance);

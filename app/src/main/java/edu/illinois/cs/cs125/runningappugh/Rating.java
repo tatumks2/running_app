@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Rating extends AppCompatActivity {
 
@@ -30,6 +31,14 @@ public class Rating extends AppCompatActivity {
     }
 
     public void changeActivity (View v) {
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                TextView notes = findViewById(R.id.notesInput);
+                Run.lastGlobalRun.notes = notes.getText().toString();
+            }
+        });
         startActivity(new Intent(Rating.this, MainActivity.class));
     }
 
