@@ -29,6 +29,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
     TextView distanceText;
     SensorManager sensorManager;
     float steps;
+    float steps2;
     float miles;
     boolean running = false;
 
@@ -60,6 +61,7 @@ public class Main2Activity extends AppCompatActivity implements SensorEventListe
         Run.lastGlobalRun = currentRun;
         savedTime = 0;
         time = 0;
+
     }
 
     public void changeActivity (View v) {
